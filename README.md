@@ -10,7 +10,26 @@ Our app is a fun and interactive pixelated game where a user can use an in game 
 
 
 
-## Endpoints
+## Wants
+
+- [ ] Time based - Takes current time vs last time accessed to determine passage of time -- crop logs times user has logged in
+
+Save locally? Or have a login? find a way to make login persist to cut down on time to access
+Gameboy Advanced style Graphics? Pixel Art
+
+Different Crops with different yields and grow time?
+
+Farm Upgrading?
+
+Spendable Currency
+
+Change image of plant based off growth percentage
+
+Tailwind for CSS
+
+Progressively Alien Plants
+
+Activity
 
 
 ---------------------------------------------------------------------------------------------
