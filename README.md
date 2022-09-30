@@ -1,4 +1,6 @@
-# Phase 3 Project Guidelines
+# Introduction 
+
+Our app is a fun and interactive game where a user can select a base crop to plant and nurture, and based on their activity, can upgrade and collect new plants.
 
 ## Learning Goals
 
@@ -29,34 +31,10 @@ For this project, you must:
 - Use good OO design patterns. You should have separate classes for each of your
   models, and create instance and class methods as necessary.
 
-For example, build a todo list application with a React frontend interface and a
-Sinatra backend API, where a user can:
-
-- **Create** a new todo
-- **Read** a list of all todos
-- **Update** an individual todo
-- **Delete** a todo
-
-A `Todo` can be tagged with a `Category`, so that each todo _belongs to_ a
-category and each category _has many_ todos.
-
 ## Getting Started
 
 ### Backend Setup
 
-This repository has all the starter code needed to get a Sinatra backend up and
-running. [**Fork and clone**][fork link] this repository to get started. Then, run
-`bundle install` to install the gems.
-
-**Important**: Be sure you fork a copy of the repo into your GitHub account
-before cloning it. You can do this by using the link above or by clicking the
-"Octocat" button at the top of this page, then clicking "Fork" in the upper
-right corner of the repo page.
-
-[fork link]: https://github.com/learn-co-curriculum/phase-3-sinatra-react-project/fork
-
-The `app/controllers/application_controller.rb` file has an example GET route
-handler. Replace this route with routes for your project.
 
 You can start your server with:
 
@@ -96,9 +74,6 @@ fetch("http://localhost:9292/test")
 
 ## Project Tips
 
-- This project is intended to focus more on the backend than the frontend, so
-  try and keep the React side of things relatively simple. Focus on working with
-  Active Record and performing CRUD actions. What are some interesting queries you can write? What kinds of questions can you ask of your data?
 - Once you have a project idea, come up with a domain model and decide what
   relationships exist between the models in your application. Use a tool like
   [dbdiagram.io][] to help visualize your models.
