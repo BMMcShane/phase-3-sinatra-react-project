@@ -12,25 +12,25 @@ Our app is a fun and interactive pixelated game where a user can use an in game 
 
 ## Wants
 
-- [ ] Time based - Takes current time vs last time accessed to determine passage of time -- crop logs times user has logged in
+- [ ] Time based -- Takes current time vs last time accessed to determine passage of time and/or crop saves a login timestamp
 
-Save locally? Or have a login? find a way to make login persist to cut down on time to access
-Gameboy Advanced style Graphics? Pixel Art
+- [ ] Save locally/have a login -- find a way to make login persist to cut down on time to access
 
-Different Crops with different yields and grow time?
+- [ ] Gameboy Advanced style Graphics -- Pixel Art
 
-Farm Upgrading?
+- [ ] Different Crops -- with different yields and grow time
 
-Spendable Currency
+- [ ] Farm Upgrading -- faster harvest times
 
-Change image of plant based off growth percentage
+- [ ] Spendable Currency -- establish initial amount and recurring return for harvests
 
-Tailwind for CSS
+- [ ] Change image of plant based off growth percentage -- visual change with pixel art
 
-Progressively Alien Plants
+- [ ] Tailwind for CSS -- utilizing new tools to build frontend display
 
-Activity
+- [ ] Progressively Alien Plants -- mutations and/ or exotic plant upgrades
 
+- [ ] Activity -- monitors user activity and how often they are using the app
 
 ---------------------------------------------------------------------------------------------
 
