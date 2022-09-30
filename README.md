@@ -7,7 +7,7 @@ Our app is a fun and interactive pixelated game where a user can use an in game 
 
 ## Wireframes
 
-![alt text](http://url/to/img.png)
+![alt text](./assets/wireframe.png)
 
 
 ## Wants
