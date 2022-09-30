@@ -1,5 +1,6 @@
 ## Introduction 
 
+🌱🌿🌵☘️
 Our app is a fun and interactive pixelated game where a user can use an in game currency to buy seeds and plant them. Users will be able to earn more currency by harvesting the plants that they grow,  and from being active. A user can also use their currency to upgrade their farm and upgrade plant functions.
 
 ## Wireframe
