@@ -1,6 +1,16 @@
 # Introduction 
 
-Our app is a fun and interactive game where a user can select a base crop to plant and nurture, and based on their activity, can upgrade and collect new plants.
+Our app is a fun and interactive pixelated game where a user can use an in game currency to buy crops and plant them. Users will be able to earn more currency by harvesting the plants that they grow. A user can also upgrade their farm over time with currency, and upgrade plant functions.
+
+# Wireframe
+
+
+
+
+# Endpoints
+
+
+
 
 ## Learning Goals
 
