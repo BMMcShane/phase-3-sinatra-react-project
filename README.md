@@ -5,14 +5,14 @@
 
 Our app is a fun and interactive pixelated game where a user can use an in game currency to buy seeds and plant them. Users will be able to earn more currency by harvesting the plants that they grow,  and from being active. A user can also use their currency to upgrade their farm and upgrade plant functions.
 
-## Wireframe
+## Wireframes
 
-
+![alt text](http://url/to/img.png)
 
 
 ## Wants
 
-- [ ] Time based -- Takes current time vs last time accessed to determine passage of time and/or crop saves a login timestamp
+- [ ] Time based -- takes current time vs last time accessed to determine passage of time, crop saves a login timestamp
 
 - [ ] Save locally/have a login -- find a way to make login persist to cut down on time to access
 
@@ -35,22 +35,10 @@ Our app is a fun and interactive pixelated game where a user can use an in game 
 ---------------------------------------------------------------------------------------------
 
 
-## Learning Goals
+## Requirements
 
 - Build a web basic API with Sinatra and Active Record to support a React
   frontend
-
-## Introduction
-
-Congrats on getting through all the material for Phase 3! Now's the time to put
-it all together and build something from scratch to reinforce what you know and
-expand your horizons.
-
-The focus of this project is **building a Sinatra API backend** that uses
-**Active Record** to access and persist data in a database, which will be used
-by a separate **React frontend** that interacts with the database via the API.
-
-## Requirements
 
 For this project, you must:
 
