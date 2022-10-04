@@ -14,8 +14,10 @@ ActiveRecord::Schema.define(version: 2022_09_30_173242) do
 
   create_table "farmers", force: :cascade do |t|
     t.integer "coins"
+    t.datetime "date"
     t.string "username"
     t.string "password"
+    t.string "plants"
   end
 
   create_table "farms", force: :cascade do |t|
@@ -29,8 +31,12 @@ ActiveRecord::Schema.define(version: 2022_09_30_173242) do
   end
 
   create_table "plants", force: :cascade do |t|
-    t.integer "plot_location"
+    t.string "name"
     t.string "plant_type"
+    t.integer "price"
+    t.integer "rarity"
+    t.string "description"
+    t.integer "plot_location"
     t.integer "time_planted"
     t.integer "farm_id"
   end

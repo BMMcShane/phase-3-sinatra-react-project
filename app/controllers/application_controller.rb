@@ -1,14 +1,34 @@
 class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
-  
-  # Add your routes here
-  get "/farmers/:username" do
-    farmer = Farmer.find_by_username(params[:username])
-      if farmer
-        farmer.to_json(include: [:plants])
-      else
-        status 401
-        { errors: "user doesn't exist" }.to_json
-      end
+
+
+  get '/farmers' do 
+    farmers = Farmer.all
+    farmers.to_json
   end
+
+  get '/plants' do 
+    plants = Plant.all
+    plants.to_json
+  end
+
+  get '/plants/:id' do 
+    plants = Plant.find(params[:id])
+    plants.to_json
+  end
+
+  get '/farmers/:id' do
+    farmer = Farmer.find(params[:id])
+    farmer.to_json(inclue: :plants)
+  end
+
+  post '/farmers' do
+    farmers = Farmer.create(
+
+      username: params[:username], 
+      password: params[:password]
+      )
+    farmers.to_json
+  end
+
 end
