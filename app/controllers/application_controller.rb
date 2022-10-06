@@ -13,6 +13,14 @@ class ApplicationController < Sinatra::Base
     farmer = Farmer.find_by(id: params[:id])
     farmer.to_json
   end
+  
+
+  get "/farmers/:username" do
+    farmer = Farmer.find_by(username: params[:username])
+    farmer.to_json
+  end
+
+  
 
   get '/farmers/:id/farms' do
     farmer = Farmer.find_by(id: params[:id])
