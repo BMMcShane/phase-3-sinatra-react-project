@@ -96,7 +96,7 @@ class ApplicationController < Sinatra::Base
   #login database
   post "/login" do
     farmer = Farmer.find_by(username: params[:username])
-    if farmer && farmer.authenticate(params[:password])
+    if farmer && farmer.password==(params[:password])
       return { farmer_id: farmer.id, message: "You Are Successfully Logged In!" }.to_json
     else
       return { farmer_id: 0, error: "Invalid Password" }.to_json
