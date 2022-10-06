@@ -9,11 +9,24 @@ class ApplicationController < Sinatra::Base
   end
 
   #returns the same information as /farmer for an individual farmer
-  get '/farmers/:id' do
-    farmer = Farmer.find(params[:id])
+  get "/farmer/:id" do
+    farmer = Farmer.find_by(id: params[:id])
     farmer.to_json
   end
 
+  get '/farmer/:id/farm' do
+    farmer = Farmer.find_by(id: params[:id])
+    farmer.match_farm.to_json
+  end
+
+  
+  #creates a list of the planted plants and corresponding data
+  get '/farmer/:id/plants' do
+    farmer = Farmer.find_by(id: params[:id])
+    planted_plants = Farm.find_by(farmer_id: farmer.id)
+    planted_plants.match_plants.to_json
+  end
+  
 
   #creates a list of all the plants in the Mill
   get '/plants' do 
@@ -27,6 +40,57 @@ class ApplicationController < Sinatra::Base
     plants.to_json
   end
 
+
+  get '/planted' do
+    planted = PlantedPlant.all
+    planted.to_json
+  end
+
+
+  #creates a list of the farms in MewMew's Mill
+  get '/farms' do
+    farms = Farm.all
+    farms.to_json
+  end
+
+  #creates a string of the data for an individual farm
+  get '/farms/:id' do 
+    farms = Farm.find(params[:id])
+    farms.to_json
+  end
+
+  # get '/farm_owner/:farmer_id' do 
+  #   farmer = Farm.find(params[:farmer_id])
+  #   farmer.to_json
+  # end
+
+  #allows plants to be added with name, plot_location, and plant_id
+  post "/farmer/:id/add_plant" do
+    plant_name = Plant.where(plant_id: plant_id).name
+    farmer = Farmer.find_by(id: params[:farmerId])
+    farm = farmer.match_farm
+
+    farmer.afford?(plant_id) ? farm.add_plant(plant_id, plot_location) :
+        { error: "you can't afford to buy #{plant_name} yet" }.to_json
+
+      plants = farm.match_plants
+      farmer.unlocked_plants << plant_name.uniq
+  end
+
+  
+# post '/farmers/:id/plants' do
+#     new_plant = Plant.find_by(name: params[:plantName])
+#     farmer.unlocked_plants.update(..new_plant)
+# end
+
+
+
+  # #renders the data for the planted plants a farmer has
+  # get "/farmers/:id/planted_plants" do
+  #   farmer = Farmer.find_by(id: params[:id])
+  #   farmer.planted_plants.to_json
+  # end
+  
   #login database
   post "/login" do
     farmer = Farmer.find_by(username: params[:username])
@@ -37,13 +101,6 @@ class ApplicationController < Sinatra::Base
     end
   end
 
-  #renders the data for the planted plants a farmer has
-  get "/farmers/:id/planted_plants" do
-    farmer = Farmer.find_by(id: params[:id])
-    farmer.pair_planted_plants.to_json
-  end
-
-  
   # post "/logout" do
   #   user = User.find_by(id: params[:id])
   #   user.update(logged_in: false)
@@ -77,6 +134,27 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+    # get "/planted_plants_" do
+    #     matches = 
+    #       PlantedPlants.all.filter do |plant|
+    #         plant["name"].include?(params["name"])
+    #       end
+    #     matches
+    #       .map do |match|
+    #         { "channel_id" => match["id"], "channel_name" => match["channel_name"] }
+    #       end
+    #       .to_json
+    #   end
+
+
+
+
+
+  # returns the same user data as /farmers, but for a single person
+  # get "/farmers/:id" do
+  #   farmer = Farmer.find(username: params[:username])
+  #   farmer.serialize_farmer.to_json
+  # end
 
 
   # ## returns a list of all of the users with the names of their planted plants
@@ -95,11 +173,6 @@ class ApplicationController < Sinatra::Base
   #     .to_json
   # end
 
-    ## returns the same user data as /farmers, but for a single person
-    # get "/farmers/:id" do
-    #   farmer = Farmer.find(id: params[:id])
-    #   farmer.serialize_farmer.to_json
-    # end
 
   
     
@@ -164,7 +237,12 @@ class ApplicationController < Sinatra::Base
         /login
         /signup
         /farmers
+        /plants
+        /farms
+        /planted_plants
         /farmers/:id
+        /plants/:id
+        /farms/:id
         /users/:id/planted_plants
       ]
     }.to_json
