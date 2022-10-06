@@ -75,6 +75,8 @@ GEM
     sinatra-activerecord (2.0.23)
       activerecord (>= 4.1)
       sinatra (>= 1.0)
+    sinatra-basic-auth (0.1.0)
+      sinatra
     sqlite3 (1.4.2)
     thin (1.8.1)
       daemons (~> 1.0, >= 1.0.9)
@@ -103,6 +105,7 @@ DEPENDENCIES
   rspec-json_expectations (~> 2.2)
   sinatra (~> 2.1)
   sinatra-activerecord (~> 2.0)
+  sinatra-basic-auth
   sqlite3 (~> 1.4)
   thin (~> 1.8)
 
