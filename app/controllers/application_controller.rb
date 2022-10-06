@@ -97,29 +97,19 @@ class ApplicationController < Sinatra::Base
   post "/login" do
     farmer = Farmer.find_by(username: params[:username])
     if farmer && farmer.authenticate(params[:password])
-      return { success: true, farmer_id: farmer.id, message: "You Are Successfully Logged In!" }.to_json
+      return { farmer_id: farmer.id, message: "You Are Successfully Logged In!" }.to_json
     else
-      return { success: false, farmer_id: 0, message: "Please Try Again" }.to_json
+      return { farmer_id: 0, error: "Invalid Password" }.to_json
     end
   end
 
-  # post "/logout" do
-  #   user = User.find_by(id: params[:id])
-  #   user.update(logged_in: false)
-  # end
-
- #signup
-  post "/farmers" do
+  post "/signup" do
     farmer = Farmer.find_by(username: params[:username])
-    # starter_plant = Plant.by_price.first 
-    # starter_upgrades = Plant.all.exclude?(starter_plant)
-    
     if farmer
       return(
         {
-          success: false,
           farmer_id: 0,
-          message: "This Username Is Taken"
+          error: "this username is taken"
         }.to_json
       )
     else
@@ -127,14 +117,45 @@ class ApplicationController < Sinatra::Base
         Farmer.create(
           username: params[:username],
           password: params[:password],
-          coins: 100,
-          unlocked_plants: "",
-          locked_plants: "",
           logged_in: true
         )
-      return { success: true, farmer_id: farmer.id, message: "Welcome! You Can Now Purchase Plants To Add To Your Farm!" }.to_json
+      return { farmer_id: farmer.id, message: "success" }.to_json
     end
   end
+
+
+  post "/logout" do
+    user = User.find_by(id: params[:id])
+    user.update(logged_in: false)
+  end
+
+ #signup
+  # post "/farmers" do
+  #   farmer = Farmer.find_by(username: params[:username])
+  #   # starter_plant = Plant.by_price.first 
+  #   # starter_upgrades = Plant.all.exclude?(starter_plant)
+    
+  #   if farmer
+  #     return(
+  #       {
+  #         success: false,
+  #         farmer_id: 0,
+  #         message: "This Username Is Taken"
+  #       }.to_json
+  #     )
+  #   else
+  #     farmer =
+  #       Farmer.create(
+  #         username: params[:username],
+  #         password: params[:password],
+  #         coins: 100,
+  #         unlocked_plants: "",
+  #         locked_plants: "",
+  #         logged_in: true
+  #       )
+  #     return { success: true, farmer_id: farmer.id, message: "Welcome! You Can Now Purchase Plants To Add To Your Farm!" }.to_json
+  #   end
+  # end
 
     # get "/planted_plants" do
     #     matches = 

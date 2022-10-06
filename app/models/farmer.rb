@@ -13,9 +13,9 @@ class Farmer < ActiveRecord::Base
 
     def match_farms 
       farms = {
-      "farm" => Farm.find_by(farmer_id: self.id)
+      "farms" => Farm.find_by(farmer_id: self.id)
   }
-  end
+    end
 
     def afford?(plant_id)
         selected_plant = Plant.find(plant_id: plant_id)
@@ -27,6 +27,9 @@ class Farmer < ActiveRecord::Base
         end
       end
     
+    def authenticate 
+        Farmer.where(password: password)
+    end
 
 end
 
