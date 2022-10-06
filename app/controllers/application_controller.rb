@@ -9,19 +9,21 @@ class ApplicationController < Sinatra::Base
   end
 
   #returns the same information as /farmer for an individual farmer
-  get "/farmer/:id" do
+  get "/farmers/:id" do
     farmer = Farmer.find_by(id: params[:id])
     farmer.to_json
   end
 
-  get '/farmer/:id/farm' do
+  get '/farmers/:id/farms' do
     farmer = Farmer.find_by(id: params[:id])
-    farmer.match_farm.to_json
+    farms = Farm.find_by(farmer_id: farmer.id)
+    farms.match_farms.to_json
   end
+  
 
   
   #creates a list of the planted plants and corresponding data
-  get '/farmer/:id/plants' do
+  get '/farmers/:id/plants' do
     farmer = Farmer.find_by(id: params[:id])
     planted_plants = Farm.find_by(farmer_id: farmer.id)
     planted_plants.match_plants.to_json
@@ -36,7 +38,7 @@ class ApplicationController < Sinatra::Base
 
   #creates a string of the data for an individual plant
   get '/plants/:id' do 
-    plants = Plant.find(params[:id])
+    plants = Plant.find_by(params[:id])
     plants.to_json
   end
 
@@ -55,7 +57,7 @@ class ApplicationController < Sinatra::Base
 
   #creates a string of the data for an individual farm
   get '/farms/:id' do 
-    farms = Farm.find(params[:id])
+    farms = Farm.find_by(params[:id])
     farms.to_json
   end
 
@@ -65,8 +67,8 @@ class ApplicationController < Sinatra::Base
   # end
 
   #allows plants to be added with name, plot_location, and plant_id
-  post "/farmer/:id/add_plant" do
-    plant_name = Plant.where(plant_id: plant_id).name
+  post "/farmers/:id/add_plant" do
+    plant_name = Plant.find_by(plant_id: plant_id).name
     farmer = Farmer.find_by(id: params[:farmerId])
     farm = farmer.match_farm
 
@@ -107,12 +109,12 @@ class ApplicationController < Sinatra::Base
   # end
 
  #signup
-  post "/signup" do
-    user = Farmer.find_by(username: params[:username])
+  post "/farmers" do
+    farmer = Farmer.find_by(username: params[:username])
     # starter_plant = Plant.by_price.first 
     # starter_upgrades = Plant.all.exclude?(starter_plant)
     
-    if user
+    if farmer
       return(
         {
           success: false,
@@ -134,14 +136,14 @@ class ApplicationController < Sinatra::Base
     end
   end
 
-    # get "/planted_plants_" do
+    # get "/planted_plants" do
     #     matches = 
     #       PlantedPlants.all.filter do |plant|
     #         plant["name"].include?(params["name"])
     #       end
     #     matches
     #       .map do |match|
-    #         { "channel_id" => match["id"], "channel_name" => match["channel_name"] }
+    #         { "planted_plant_id" => match["plant_id"], "plant_name" => match["plant_name"] }
     #       end
     #       .to_json
     #   end

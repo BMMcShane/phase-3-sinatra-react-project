@@ -11,14 +11,14 @@ class Farmer < ActiveRecord::Base
     #     }
     # end
 
-    def match_farm 
-        farm = {
-        "farm" => Farm.where(farmer_id: self.id)
-    }
-    end
+    def match_farms 
+      farms = {
+      "farm" => Farm.find_by(farmer_id: self.id)
+  }
+  end
 
     def afford?(plant_id)
-        selected_plant = Plant.where(plant_id: plant_id)
+        selected_plant = Plant.find(plant_id: plant_id)
         
         if selected_plant.price < self.coins
           return true
