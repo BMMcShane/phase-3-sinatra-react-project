@@ -3,15 +3,15 @@ puts "🌱 Seeding plants..."
 
 #Farmers with extra coins to test features
 nick =
-    Farmer.create(username: "nick", password: "password", coins: 1000, unlocked_plants: "", locked_plants: "", logged_in: false)
+    Farmer.create(username: "nick", password: "password", coins: 100, logged_in: false)
 ben =
-    Farmer.create(username: "ben", password: "password", coins: 1000, unlocked_plants: "", locked_plants: "", logged_in: false)
+    Farmer.create(username: "ben", password: "password", coins: 100, logged_in: false)
 nessa =
-    Farmer.create(username: "nessa", password: "password", coins: 1000, unlocked_plants: "", locked_plants: "", logged_in: false)
+    Farmer.create(username: "nessa", password: "password", coins: 100, logged_in: false)
 admin = 
-    Farmer.create(username: "admin", password: "password", coins: 1000, unlocked_plants: "", locked_plants: "", logged_in: false)
+    Farmer.create(username: "admin", password: "password", coins: 100, logged_in: false)
 example = 
-    Farmer.create(username: "example", password: "password", coins: 100, unlocked_plants: "", locked_plants: "", logged_in: false)
+    Farmer.create(username: "example", password: "password", coins: 100, logged_in: false)
 
 #Plants for the Plantopedia, and Shoppe
 grass = Plant.create(name: "Grass", price: nil, description: "kickin' some grass")

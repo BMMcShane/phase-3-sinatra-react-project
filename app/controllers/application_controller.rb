@@ -14,18 +14,12 @@ class ApplicationController < Sinatra::Base
     farmer.to_json
   end
   
-
-  get "/farmers/:username" do
-    farmer = Farmer.find_by(username: params[:username])
-    farmer.to_json
-  end
-
   
 
   get '/farmers/:id/farms' do
-    farmer = Farmer.find_by(id: params[:id])
-    farms = Farm.find_by(farmer_id: farmer.id)
-    farms.match_farms.to_json
+    farm = Farm.find_by(farmer_id: params[:id])
+    farm.to_json
+    # farm.match_farms.to_json
   end
   
 
@@ -34,7 +28,8 @@ class ApplicationController < Sinatra::Base
   get '/farmers/:id/plants' do
     farmer = Farmer.find_by(id: params[:id])
     planted_plants = Farm.find_by(farmer_id: farmer.id)
-    planted_plants.match_plants.to_json
+    plants = planted_plants.match_plants
+    plants.to_json
   end
   
 

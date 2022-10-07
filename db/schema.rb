@@ -16,8 +16,6 @@ ActiveRecord::Schema.define(version: 2022_10_05_203605) do
     t.string "username"
     t.string "password"
     t.integer "coins", default: 100
-    t.string "unlocked_plants"
-    t.string "locked_plants"
     t.boolean "logged_in"
   end
 
