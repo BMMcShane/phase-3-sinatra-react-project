@@ -63,12 +63,12 @@ class ApplicationController < Sinatra::Base
   end
 
   #allows plants to be added with name, plot_location, and plant_id
-  post "/farmers/:id/add_plant/:plant_id/:plot_location" do
+  post "/farmers/:id/add_plant/:plant_id" do
     plant = Plant.find_by(params[:id])
     farmer = Farmer.find_by(params[:plant_id])
     farm = Farm.find_by(farmer_id: params[:id])
-    planted = PlantedPlant.create(plot_location: plot_location, time_planted: Date.new, farm_id: farm.id, plant_id: plant.id)
-    
+    planted = PlantedPlant.create( time_planted: Date.new, farm_id: farm.id, plant_id: plant.id)
+    planted.to_json
   end
 
   #login functionality to make sure the same username cannot be reclaimed

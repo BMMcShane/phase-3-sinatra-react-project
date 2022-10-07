@@ -36,7 +36,7 @@ end
 
 Farm.all.each do |farm|
     1.times do
-        PlantedPlant.create(plot_location: 1, time_planted: Date.new, farm_id: farm.id, plant_id: 1)
+        PlantedPlant.create(time_planted: Date.new, farm_id: farm.id, plant_id: 1)
     end
 end
 

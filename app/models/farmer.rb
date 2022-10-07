@@ -1,22 +1,27 @@
 class Farmer < ActiveRecord::Base
     has_many :planted_plants, through: :farms
-
-
-    # def serialize_farmer
-    #     farmer_hash = {
-    #     "id" => self.attributes["id"],
-    #     "username" => self.attributes["username"],
-    #     "unlocked_plants" => self.attributes["unlocked_plants"],
-    #     "coins" => self.attributes["coins"]
-    #     }
-    # end
-
-    def match_farms 
-      farms = {
-      "farms" => Farm.find_by(farmer_id: self.id)
-  }
+    
+    def serialize_farmer
+        farmer_hash = {
+        "id" => self.attributes["id"],
+        "username" => self.attributes["username"],
+        "unlocked_plants" => self.attributes["unlocked_plants"],
+        "coins" => self.attributes["coins"]
+        }
     end
 
+  
+
+    # def match_name(username)
+    #   username = {
+    #     "username" => Farmer.find_by(username: self.username)
+    # end
+
+  #   def match_farms 
+  #     farms = {
+  #     "farm" => Farm.find_by(farmer_id: self.id)
+  # }
+  # end
     def afford?(plant_id)
         selected_plant = Plant.find(plant_id: plant_id)
         
@@ -26,10 +31,9 @@ class Farmer < ActiveRecord::Base
           return false
         end
       end
+
+
     
-    def authenticate 
-        Farmer.where(password: password)
-    end
 
 end
 
