@@ -34,13 +34,6 @@ Farmer.all.each do |farmer|
     end
 end
 
-# nessa.match_farm do |farm|
-#     farm.add_plant(1,1)
-#     plant_name = Plant.find(plant_id: plant_id).name
-#     plants = farm.match_plants
-#     self.unlocked_plants << plant_name
-# end
-
 Farm.all.each do |farm|
     1.times do
         PlantedPlant.create(plot_location: 1, time_planted: Date.new, farm_id: farm.id, plant_id: 1)
