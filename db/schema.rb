@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2022_10_05_203605) do
   create_table "plants", force: :cascade do |t|
     t.string "name"
     t.integer "price"
+    t.integer "grow_time"
     t.string "description"
   end
 

@@ -127,10 +127,10 @@ class ApplicationController < Sinatra::Base
   end
 
 
-  post "/logout" do
-    user = User.find_by(id: params[:id])
-    user.update(logged_in: false)
-  end
+  # post "/logout" do
+  #   user = User.find_by(id: params[:id])
+  #   user.update(logged_in: false)
+  # end
 
  #signup
   # post "/farmers" do
