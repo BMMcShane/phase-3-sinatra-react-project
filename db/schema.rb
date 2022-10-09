@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2022_10_05_203605) do
   end
 
   create_table "planted_plants", force: :cascade do |t|
+    t.integer "plot_location"
     t.datetime "time_planted"
     t.integer "farm_id"
     t.integer "plant_id"

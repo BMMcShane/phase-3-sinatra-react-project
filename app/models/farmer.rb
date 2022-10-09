@@ -10,7 +10,9 @@ class Farmer < ActiveRecord::Base
         }
     end
 
-  
+    def match_coins 
+      coins = self.coins
+    end
 
     # def match_name(username)
     #   username = {

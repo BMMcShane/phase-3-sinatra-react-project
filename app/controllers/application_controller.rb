@@ -30,6 +30,20 @@ class ApplicationController < Sinatra::Base
     plants.to_json
   end
   
+  #gets coin count for individual farmer
+  get '/farmers/:id/coins' do
+    farmer = Farmer.find_by(id: params[:id])
+    coins = farmer.match_coins
+    coins.to_json
+  end
+
+  #update coins
+  patch '/farmers/:id/coins' do
+   User.find(params[:user_id]).update(coins: params[:coins]).to_json
+  end
+  
+
+  
 
   #creates a list of all the plants in the Mill
   get '/plants' do 
@@ -63,11 +77,11 @@ class ApplicationController < Sinatra::Base
   end
 
   #allows plants to be added with name, plot_location, and plant_id
-  post "/farmers/:id/add_plant/:plant_id" do
-    plant = Plant.find_by(params[:id])
-    farmer = Farmer.find_by(params[:plant_id])
+  post "/farmers/:id/add_plant/:plant_id/:plot_location" do
+    farmer = Farmer.find_by(params[:id])
     farm = Farm.find_by(farmer_id: params[:id])
-    planted = PlantedPlant.create( time_planted: Date.new, farm_id: farm.id, plant_id: plant.id)
+    plant = Plant.find_by(params[:plant_id])
+    planted = PlantedPlant.create(plot_location: rand(0..25), time_planted: Date.new, farm_id: farm.id, plant_id: plant.id)
     planted.to_json
   end
 
@@ -96,9 +110,17 @@ class ApplicationController < Sinatra::Base
         Farmer.create(
           username: params[:username],
           password: params[:password],
+          coins: params[:coins],
           logged_in: true
         )
       return { farmer_id: farmer.id, message: "success" }.to_json
     end
+  end
+
+  #deleting a user
+  delete "/farmers/:id/delete" do
+    farmer = Farmer.find(params[:id])
+    farmer.destroy
+    farmer.to_json
   end
 end
